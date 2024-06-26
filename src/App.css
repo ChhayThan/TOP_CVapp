@@ -1,0 +1,11 @@
+main {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+section.info-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}

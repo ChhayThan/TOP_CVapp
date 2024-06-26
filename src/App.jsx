@@ -1,14 +1,15 @@
 import { useState } from "react";
+import PersonalInfo from "./components/PersonalInfo";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <body>
-        <section className="info-form"></section>
-        <section className="cv"></section>
-      </body>
+      <main>
+        <section className="info-form">
+          <PersonalInfo />
+        </section>
+        <section className="cv-preview"></section>
+      </main>
     </>
   );
 }
