@@ -4,6 +4,8 @@ div.personalContainer {
   font-family: "Poppins", sans-serif;
   font-weight: 400;
   font-style: normal;
+
+  margin: 10px;
 }
 
 div.title {
@@ -12,4 +14,10 @@ div.title {
 
 div.title img {
   width: 2em;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  font-size: 1.3rem;
 }

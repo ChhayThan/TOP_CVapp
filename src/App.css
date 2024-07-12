@@ -8,4 +8,54 @@ section.info-form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width: 50vw;
+}
+
+section.cv-preview {
+  width: 50vw;
+}
+
+div.cv {
+  width: 80%;
+  height: 100%;
+  padding: 10px;
+  margin: 20px;
+  box-shadow: 0px 3px 10px rgb(133, 133, 133);
+  font-family: "Times New Roman", Times, serif;
+}
+
+h1.fullName {
+  font-size: 3rem;
+  text-align: center;
+}
+div.contact {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+
+  font-style: italic;
+  font-size: 0.8em;
+}
+div.contact h2 {
+  font-weight: normal;
+}
+
+/* unvisited link */
+a:link {
+  color: black;
+}
+
+/* visited link */
+a:visited {
+  color: rgb(80, 80, 80);
+}
+
+/* mouse over link */
+a:hover {
+  color: rgb(42, 42, 42);
+}
+
+/* selected link */
+a:active {
+  color: rgb(0, 0, 0);
 }
