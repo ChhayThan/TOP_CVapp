@@ -14,6 +14,57 @@ function App() {
   );
   const [githubURL, setGithubURL] = useState("github.com/ChhayThan");
 
+  let qualitiesArray = [
+    {
+      description:
+        "Enthusiastic and highly motivated software engineering student with a passion for learning and a strong desire to contribute to innovative and meaningful projects.",
+      id: 0,
+    },
+    {
+      description:
+        "Excellent communicator with strong written and verbal communication skills, capable of collaborating in team-based environments shown through past team-focused projects.",
+      id: 1,
+    },
+    {
+      description:
+        "Strong analytical and problem-solving abilities, shown through successful completion of projects and coursework.",
+      id: 2,
+    },
+    {
+      description:
+        "Proficient in using HTML, CSS, JavaScript with experience building interactive and responsive webpages.",
+      id: 4,
+    },
+  ];
+
+  const [qualities, setQualities] = useState(qualitiesArray);
+
+  function qualityDeleteBtnOnClick(id) {
+    for (let i = 0; i < qualities.length; i++) {
+      if (qualities[i].id === id) {
+        qualities.splice(i, 1);
+      }
+      let newQualityArray = [...qualities];
+      setQualities(newQualityArray);
+    }
+  }
+  function qualityAddOnClick() {
+    let newID = qualities[qualities.length - 1].id + 1;
+    qualities.push({ description: "", id: newID });
+    let newQualityArray = [...qualities];
+    setQualities(newQualityArray);
+  }
+
+  function qualityOnChange(id, description) {
+    for (let i = 0; i < qualities.length; i++) {
+      if (qualities[i].id === id) {
+        qualities[i].description = description;
+      }
+      let newQualityArray = [...qualities];
+      setQualities(newQualityArray);
+    }
+  }
+
   let fullName = firstNameValue + " " + lastNameValue;
   return (
     <>
@@ -39,7 +90,12 @@ function App() {
             githubURL={githubURL}
             setGithubURL={(e) => setGithubURL(e.target.value)}
           />
-          <Qualification />
+          <Qualification
+            qualities={qualities}
+            qualityDeleteOnClick={qualityDeleteBtnOnClick}
+            qualityAddOnClick={qualityAddOnClick}
+            qualityOnChange={qualityOnChange}
+          />
         </section>
         <section className="cv-preview">
           <div className="cv">
@@ -58,6 +114,16 @@ function App() {
             </div>
             <div className="qualification">
               <h2>SUMMARY OF QUALIFICATIONS</h2>
+              <ul>
+                {qualities.map((quality) => {
+                  return (
+                    <li key={quality.id}>
+                      <span className="dot">&#x2022; </span>
+                      {quality.description}
+                    </li>
+                  );
+                })}
+              </ul>
             </div>
           </div>
         </section>

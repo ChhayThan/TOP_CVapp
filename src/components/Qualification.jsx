@@ -1,7 +1,12 @@
 import "../styles/Qualification.css";
-import CustomInput from "../util/CustomInput.jsx";
+import { useState } from "react";
 
-export default function Qualification() {
+export default function Qualification({
+  qualities,
+  qualityDeleteOnClick,
+  qualityAddOnClick,
+  qualityOnChange,
+}) {
   return (
     <div className="qualificationContainer">
       <div className="title">
@@ -9,12 +14,25 @@ export default function Qualification() {
         <h1>Summary Of Qualification</h1>
       </div>
       <ul className="qualityItems">
-        <li>
-          <textarea name="" id=""></textarea>
-        </li>
+        {qualities.map((quality) => {
+          return (
+            <li key={quality.id}>
+              <span className="dot">&#x2022; </span>
+              <textarea
+                value={quality.description}
+                onChange={(e) => qualityOnChange(quality.id, e.target.value)}
+              ></textarea>
+              <button onClick={() => qualityDeleteOnClick(quality.id)}>
+                Delete
+              </button>
+            </li>
+          );
+        })}
       </ul>
 
-      <button className="addQualityBtn">Add Quality Item</button>
+      <button className="addQualityBtn" onClick={() => qualityAddOnClick()}>
+        Add Quality Item
+      </button>
     </div>
   );
 }

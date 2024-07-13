@@ -61,11 +61,25 @@ a:active {
   color: rgb(0, 0, 0);
 }
 
+div.qualification {
+  margin: 10px;
+}
+
 div.qualification h2 {
   margin: 10px;
+  font-size: 1.4em;
   font-weight: normal;
 
   border-bottom: 1px solid rgb(83, 83, 83);
+}
+
+div.qualification li {
+  margin-left: 2em;
+  font-size: 1em;
+}
+
+span.dot {
+  font-size: 1.5em;
 }
 
 @media screen and (max-width: 699px) {
