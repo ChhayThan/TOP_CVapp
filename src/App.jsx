@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PersonalInfo from "./components/PersonalInfo";
-import "./App.css";
+import Qualification from "./components/Qualification";
+import "./styles/App.css";
 
 function App() {
   const [firstNameValue, setFirstNameValue] = useState("Eric");
@@ -38,21 +39,25 @@ function App() {
             githubURL={githubURL}
             setGithubURL={(e) => setGithubURL(e.target.value)}
           />
+          <Qualification />
         </section>
         <section className="cv-preview">
           <div className="cv">
             <div className="heading">
               <h1 className="fullName">{fullName}</h1>
               <div className="contact">
-                <h2 className="phoneNumber">{phoneNumber}</h2>
-                <h2 className="email">{emailAddress}</h2>
-                <h2 className="linkedin">
+                <p className="phoneNumber">{phoneNumber}</p>
+                <p className="email">{emailAddress}</p>
+                <p className="linkedin">
                   <a href={linkedinURL}>{linkedinURL}</a>
-                </h2>
-                <h2 className="github">
+                </p>
+                <p className="github">
                   <a href={githubURL}>{githubURL}</a>
-                </h2>
+                </p>
               </div>
+            </div>
+            <div className="qualification">
+              <h2>SUMMARY OF QUALIFICATIONS</h2>
             </div>
           </div>
         </section>

@@ -16,8 +16,9 @@ section.cv-preview {
 }
 
 div.cv {
-  width: 80%;
-  height: 100%;
+  /* width: 80%;
+  height: 100%; */
+  min-width: 820px;
   padding: 10px;
   margin: 20px;
   box-shadow: 0px 3px 10px rgb(133, 133, 133);
@@ -36,8 +37,8 @@ div.contact {
   font-style: italic;
   font-size: 0.8em;
 }
-div.contact h2 {
-  font-weight: normal;
+div.contact p {
+  font-size: 1.5em;
 }
 
 /* unvisited link */
@@ -58,4 +59,17 @@ a:hover {
 /* selected link */
 a:active {
   color: rgb(0, 0, 0);
+}
+
+div.qualification h2 {
+  margin: 10px;
+  font-weight: normal;
+
+  border-bottom: 1px solid rgb(83, 83, 83);
+}
+
+@media screen and (max-width: 699px) {
+  main {
+    flex-direction: column;
+  }
 }
