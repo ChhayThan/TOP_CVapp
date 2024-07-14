@@ -180,6 +180,50 @@ function App() {
     setProgram("Bachelor of Science, Computer Science (Co-Op)");
     setEducationLocationValue("Cambridge, Massachusetts");
     setYearOfStudy("2023-2028");
+
+    let exampleTechnicalSkillsArray = [
+      {
+        title: "Languages",
+        description: "Java, Python, React, JavaScript, HTML/CSS",
+        id: uuidv4(),
+      },
+      {
+        title: "Tools",
+        description:
+          "Git, VScode, Webpack, Jest/JUnit, Microsoft Office (Power Point, Excel, Word)",
+        id: uuidv4(),
+      },
+      {
+        title: "Systems",
+        description: "Windows, MacOS, Linux",
+        id: uuidv4(),
+      },
+    ];
+    let exampleRelevantSkillsArray = [
+      {
+        description:
+          "Excellent learning and adaptability skills demonstrated through coursework and past projects",
+        id: uuidv4(),
+      },
+      {
+        description:
+          "Excellent time management and organization skills gained from active roles in managing and organizing tasks",
+        id: uuidv4(),
+      },
+      {
+        description:
+          "Great sense of responsibility and accountability observed by fellow team members",
+        id: uuidv4(),
+      },
+      {
+        description:
+          "Great problem-solving and critical thinking skills proven through past projects",
+        id: uuidv4(),
+      },
+    ];
+
+    setTechnicalSkills(exampleTechnicalSkillsArray);
+    setRelevantSkills(exampleRelevantSkillsArray);
   }
 
   function clearForm() {
@@ -189,6 +233,19 @@ function App() {
     setEmailAddress("");
     setLinkedinURL("");
     setGithubURL("");
+    setTechnicalSkills([
+      {
+        title: "",
+        description: "",
+        id: uuidv4(),
+      },
+    ]);
+    setRelevantSkills([
+      {
+        description: "",
+        id: uuidv4(),
+      },
+    ]);
 
     let exampleQualityArray = [
       {
@@ -299,20 +356,20 @@ function App() {
               </div>
             </div>
             <div className="qualification">
-              <h2>SUMMARY OF QUALIFICATIONS</h2>
+              <h2 className="sectionHeading">SUMMARY OF QUALIFICATIONS</h2>
               <ul>
                 {qualities.map((quality) => {
                   return (
                     <li key={quality.id}>
                       <span className="dot">&#x2022; </span>
-                      {quality.description}
+                      <p>{quality.description}</p>
                     </li>
                   );
                 })}
               </ul>
             </div>
             <div className="education">
-              <h2>EDUCATION</h2>
+              <h2 className="sectionHeading">EDUCATION</h2>
               <h3 className="institution">
                 {gpaValue
                   ? institutionValue + " GPA: " + gpaValue
@@ -321,6 +378,40 @@ function App() {
               <p className="educationLocation">{educationLocationValue}</p>
               <p className="program">{programValue}</p>
               <p className="yearOfStudy">{yearOfStudyValue}</p>
+            </div>
+            <div className="skills">
+              <h2 className="sectionHeading"> SKILLS</h2>
+              <div className="technicalSkills">
+                <h3>Technical Skills</h3>
+                <ul>
+                  {technicalSkills.map((technicalSkill) => {
+                    return (
+                      <li key={technicalSkill.id}>
+                        <span className="dot">&#x2022; </span>
+                        <span className="skillTitle">
+                          {technicalSkill.title
+                            ? technicalSkill.title + ": "
+                            : null}
+                        </span>
+                        {technicalSkill.description}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+              <div className="relevantSkills">
+                <h3>Relevant Skills</h3>
+                <ul>
+                  {relevantSkills.map((relevantSkill) => {
+                    return (
+                      <li key={relevantSkill.id}>
+                        <span className="dot">&#x2022; </span>
+                        <p>{relevantSkill.description}</p>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
             </div>
           </div>
         </section>

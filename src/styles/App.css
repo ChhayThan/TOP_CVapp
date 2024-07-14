@@ -97,8 +97,7 @@ div.qualification {
   margin: 10px;
 }
 
-div.qualification h2,
-div.education h2 {
+h2.sectionHeading {
   margin: 10px;
   font-size: 1em;
   font-weight: 300;
@@ -109,6 +108,8 @@ div.education h2 {
 div.qualification li {
   margin-left: 2em;
   font-size: 1em;
+  display: flex;
+  align-items: flex-start;
 }
 
 span.dot {
@@ -142,6 +143,26 @@ p.yearOfStudy {
 h3.institution,
 p.program {
   padding-left: 1em;
+}
+
+div.technicalSkills,
+div.relevantSkills {
+  padding-left: 1em;
+}
+
+div.technicalSkills ul li,
+div.relevantSkills ul li {
+  display: flex;
+  align-items: flex-start;
+
+  font-size: 1em;
+  line-height: 90%;
+}
+
+div.technicalSkills h3,
+div.relevantSkills h3 {
+  font-weight: bold;
+  font-size: 1.1em;
 }
 
 @media screen and (max-width: 1600px) {
@@ -192,5 +213,16 @@ p.program {
 
   section.cv-preview {
     transform: scale(0.4);
+  }
+}
+
+@media print {
+  section.info-form {
+    display: none;
+  }
+  div.cv {
+    padding: 0px;
+    margin: 0px;
+    box-shadow: none;
   }
 }
