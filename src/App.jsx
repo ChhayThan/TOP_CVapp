@@ -5,36 +5,18 @@ import Education from "./components/Education";
 import "./styles/App.css";
 
 function App() {
-  const [firstNameValue, setFirstNameValue] = useState("Eric");
-  const [lastNameValue, setLastNameValue] = useState("Chhour");
+  const [firstNameValue, setFirstNameValue] = useState("");
+  const [lastNameValue, setLastNameValue] = useState("");
 
-  const [phoneNumber, setPhoneNumber] = useState("613-890-1066");
-  const [emailAddress, setEmailAddress] = useState("cchho053@uottawa.ca");
-  const [linkedinURL, setLinkedinURL] = useState(
-    "linkedin.com/in/chhay-than-chhour"
-  );
-  const [githubURL, setGithubURL] = useState("github.com/ChhayThan");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [emailAddress, setEmailAddress] = useState("");
+  const [linkedinURL, setLinkedinURL] = useState("");
+  const [githubURL, setGithubURL] = useState("");
 
   let qualitiesArray = [
     {
-      description:
-        "Enthusiastic and highly motivated software engineering student with a passion for learning and a strong desire to contribute to innovative and meaningful projects.",
+      description: "",
       id: 0,
-    },
-    {
-      description:
-        "Excellent communicator with strong written and verbal communication skills, capable of collaborating in team-based environments shown through past team-focused projects.",
-      id: 1,
-    },
-    {
-      description:
-        "Strong analytical and problem-solving abilities, shown through successful completion of projects and coursework.",
-      id: 2,
-    },
-    {
-      description:
-        "Proficient in using HTML, CSS, JavaScript with experience building interactive and responsive webpages.",
-      id: 4,
     },
   ];
 
@@ -71,19 +53,82 @@ function App() {
     }
   }
 
-  const [institutionValue, setInstitution] = useState("University Of Ottawa");
-  const [gpaValue, setGpa] = useState("9.3/10");
-  const [programValue, setProgram] = useState(
-    "Bachelor of Applied Science, Software Engineering (Co-Op)"
-  );
-  const [educationLocationValue, setEducationLocationValue] =
-    useState("Ottawa, ON");
-  const [yearOfStudyValue, setYearOfStudy] = useState("2023-2028");
+  const [institutionValue, setInstitution] = useState("");
+  const [gpaValue, setGpa] = useState("");
+  const [programValue, setProgram] = useState("");
+  const [educationLocationValue, setEducationLocationValue] = useState("");
+  const [yearOfStudyValue, setYearOfStudy] = useState("");
+
+  function loadExample() {
+    setFirstNameValue("Eric");
+    setLastNameValue("C");
+    setPhoneNumber("123-456-7890");
+    setEmailAddress("eric@company.ca");
+    setLinkedinURL("linkedin.com/in/some-address");
+    setGithubURL("github.com/user");
+
+    let exampleQualityArray = [
+      {
+        description:
+          "Enthusiastic and highly motivated software engineering student with a passion for learning and a strong desire to contribute to innovative and meaningful projects.",
+        id: 0,
+      },
+      {
+        description:
+          "Excellent communicator with strong written and verbal communication skills, capable of collaborating in team-based environments shown through past team-focused projects.",
+        id: 1,
+      },
+      {
+        description:
+          "Strong analytical and problem-solving abilities, shown through successful completion of projects and coursework.",
+        id: 2,
+      },
+    ];
+
+    setQualities(exampleQualityArray);
+    setInstitution("Harvard University");
+    setGpa("4.0");
+    setProgram("Bachelor of Science, Computer Science (Co-Op)");
+    setEducationLocationValue("Cambridge, Massachusetts");
+    setYearOfStudy("2023-2028");
+  }
+
+  function clearForm() {
+    setFirstNameValue("");
+    setLastNameValue("");
+    setPhoneNumber("");
+    setEmailAddress("");
+    setLinkedinURL("");
+    setGithubURL("");
+
+    let exampleQualityArray = [
+      {
+        description: "",
+        id: 0,
+      },
+    ];
+
+    setQualities(exampleQualityArray);
+    setInstitution("");
+    setGpa("");
+    setProgram("");
+    setEducationLocationValue("");
+    setYearOfStudy("");
+  }
 
   return (
     <>
       <main>
         <section className="info-form">
+          <div className="formBtn">
+            <button className="loadExampleBtn" onClick={() => loadExample()}>
+              Load Example
+            </button>
+            <button className="clearFormBtn" onClick={() => clearForm()}>
+              Clear Form
+            </button>
+          </div>
+
           <PersonalInfo
             setFirstName={(e) => setFirstNameValue(e.target.value)}
             setLastName={(e) => setLastNameValue(e.target.value)}
@@ -115,13 +160,25 @@ function App() {
             institutionValue={institutionValue}
             setInstitution={(e) => setInstitution(e.target.value)}
             gpaValue={gpaValue}
-            setGpa={(e) => setGpa(e.target.value)}
+            setGpa={(e) => {
+              const newValue = e.target.value;
+              const isValid = /^[0-9.]*$/.test(newValue);
+              if (isValid) {
+                setGpa(newValue);
+              }
+            }}
             programValue={programValue}
             setProgram={(e) => setProgram(e.target.value)}
             educationLocationValue={educationLocationValue}
             setLocation={(e) => setEducationLocationValue(e.target.value)}
             yearOfStudyValue={yearOfStudyValue}
-            setYearOfStudy={(e) => setYearOfStudy(e.target.value)}
+            setYearOfStudy={(e) => {
+              const newValue = e.target.value;
+              const isValid = /^[0-9-]*$/.test(newValue);
+              if (isValid) {
+                setYearOfStudy(newValue);
+              }
+            }}
           />
         </section>
         <section className="cv-preview">
@@ -157,10 +214,13 @@ function App() {
             <div className="education">
               <h2>EDUCATION</h2>
               <h3 className="institution">
-                {institutionValue + " GPA: " + gpaValue}
+                {gpaValue
+                  ? institutionValue + " GPA: " + gpaValue
+                  : institutionValue}
               </h3>
-              <p className="program">{programValue}</p>
               <p className="educationLocation">{educationLocationValue}</p>
+              <p className="program">{programValue}</p>
+              <p className="yearOfStudy">{yearOfStudyValue}</p>
             </div>
           </div>
         </section>
