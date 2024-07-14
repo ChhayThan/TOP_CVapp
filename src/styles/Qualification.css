@@ -38,8 +38,6 @@ textarea {
 
 button.qualityDeleteBtn {
   font-family: "Poppins", sans-serif;
-  background-color: rgb(255, 89, 89);
-  color: white;
   border-radius: 10px;
   border: none;
   padding: 8px;
@@ -47,6 +45,7 @@ button.qualityDeleteBtn {
 }
 button.qualityDeleteBtn:hover {
   background-color: rgb(192, 57, 57);
+  color: white;
 }
 
 button.qualityDeleteBtn:active,
@@ -56,8 +55,6 @@ button.addQualityBtn:active {
 
 button.addQualityBtn {
   font-family: "Poppins", sans-serif;
-  background-color: rgb(44, 186, 44);
-  color: white;
   border-radius: 10px;
   border: none;
   padding: 8px;
@@ -65,5 +62,6 @@ button.addQualityBtn {
 }
 
 button.addQualityBtn:hover {
-  background-color: rgb(47, 220, 47);
+  background-color: rgb(44, 186, 44);
+  color: white;
 }

@@ -2,7 +2,9 @@ import { useState } from "react";
 import PersonalInfo from "./components/PersonalInfo";
 import Qualification from "./components/Qualification";
 import Education from "./components/Education";
+import Skills from "./components/Skills";
 import "./styles/App.css";
+import { v4 as uuidv4 } from "uuid";
 
 function App() {
   const [firstNameValue, setFirstNameValue] = useState("");
@@ -16,7 +18,7 @@ function App() {
   let qualitiesArray = [
     {
       description: "",
-      id: 0,
+      id: uuidv4(),
     },
   ];
 
@@ -33,11 +35,11 @@ function App() {
   }
   function qualityAddOnClick() {
     if (qualities.length <= 0) {
-      let newQualityArray = [{ description: "", id: 0 }];
+      let newQualityArray = [{ description: "", id: uuidv4() }];
       setQualities(newQualityArray);
       return;
     }
-    let newID = qualities[qualities.length - 1].id + 1;
+    let newID = uuidv4();
     qualities.push({ description: "", id: newID });
     let newQualityArray = [...qualities];
     setQualities(newQualityArray);
@@ -58,6 +60,93 @@ function App() {
   const [programValue, setProgram] = useState("");
   const [educationLocationValue, setEducationLocationValue] = useState("");
   const [yearOfStudyValue, setYearOfStudy] = useState("");
+
+  let technicalSkillsArray = [
+    {
+      title: "",
+      description: "",
+      id: uuidv4(),
+    },
+  ];
+  let relevantSkillsArray = [
+    {
+      description: "",
+      id: uuidv4(),
+    },
+  ];
+
+  const [technicalSkills, setTechnicalSkills] = useState(technicalSkillsArray);
+  const [relevantSkills, setRelevantSkills] = useState(relevantSkillsArray);
+
+  function technicalSkillDeleteOnClick(id) {
+    for (let i = 0; i < technicalSkills.length; i++) {
+      if (technicalSkills[i].id === id) {
+        technicalSkills.splice(i, 1);
+      }
+      let newTechnicalSkills = [...technicalSkills];
+      setTechnicalSkills(newTechnicalSkills);
+    }
+  }
+
+  function technicalSkillAddOnClick() {
+    let newTechnicalSkills;
+    if (technicalSkills.length <= 0) {
+      newTechnicalSkills = [{ title: "", description: "", id: uuidv4() }];
+    } else {
+      newTechnicalSkills = [
+        ...technicalSkills,
+        { title: "", description: "", id: uuidv4() },
+      ];
+    }
+    setTechnicalSkills(newTechnicalSkills);
+  }
+
+  function technicalSkillOnChange(id, value, section) {
+    for (let i = 0; i < technicalSkills.length; i++) {
+      if (technicalSkills[i].id === id) {
+        if (section === "title") {
+          technicalSkills[i].title = value;
+        } else if (section === "description") {
+          technicalSkills[i].description = value;
+        }
+      }
+      let newTechnicalSkills = [...technicalSkills];
+      setTechnicalSkills(newTechnicalSkills);
+    }
+  }
+
+  function relevantSkillDeleteOnClick(id) {
+    for (let i = 0; i < relevantSkills.length; i++) {
+      if (relevantSkills[i].id === id) {
+        relevantSkills.splice(i, 1);
+      }
+      let newRelevantSkills = [...relevantSkills];
+      setRelevantSkills(newRelevantSkills);
+    }
+  }
+
+  function relevantSkillAddOnClick() {
+    let newRelevantSkills;
+    if (relevantSkills.length <= 0) {
+      newRelevantSkills = [{ description: "", id: uuidv4() }];
+    } else {
+      newRelevantSkills = [
+        ...relevantSkills,
+        { description: "", id: uuidv4() },
+      ];
+    }
+    setRelevantSkills(newRelevantSkills);
+  }
+
+  function relevantSkillOnChange(id, value) {
+    for (let i = 0; i < technicalSkills.length; i++) {
+      if (relevantSkills[i].id === id) {
+        relevantSkills[i].description = value;
+      }
+      let newRelevantSkills = [...relevantSkills];
+      setRelevantSkills(newRelevantSkills);
+    }
+  }
 
   function loadExample() {
     setFirstNameValue("Eric");
@@ -179,6 +268,17 @@ function App() {
                 setYearOfStudy(newValue);
               }
             }}
+          />
+
+          <Skills
+            technicalSkills={technicalSkills}
+            technicalSkillDeleteOnClick={technicalSkillDeleteOnClick}
+            technicalSkillAddOnClick={technicalSkillAddOnClick}
+            technicalSkillOnChange={technicalSkillOnChange}
+            relevantSkills={relevantSkills}
+            relevantSkillDeleteOnClick={relevantSkillDeleteOnClick}
+            relevantSkillAddOnClick={relevantSkillAddOnClick}
+            relevantSkillOnChange={relevantSkillOnChange}
           />
         </section>
         <section className="cv-preview">

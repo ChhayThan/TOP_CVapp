@@ -1,5 +1,4 @@
 import "../styles/Qualification.css";
-import { useState } from "react";
 
 export default function Qualification({
   qualities,
