@@ -50,6 +50,9 @@ div.cv {
   box-shadow: 0px 3px 10px rgb(133, 133, 133);
   font-family: "Times New Roman", Times, serif;
 
+  min-width: 768px;
+  min-height: 1056px;
+
   width: 768px;
   height: 1056px;
 }
@@ -177,6 +180,7 @@ div.relevantSkills h3 {
   section.cv-preview {
     display: flex;
     justify-content: center;
+    transform: scale(1);
   }
 }
 
