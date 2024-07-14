@@ -16,8 +16,6 @@ section.cv-preview {
 }
 
 div.cv {
-  /* width: 80%;
-  height: 100%; */
   min-width: 820px;
   padding: 10px;
   margin: 20px;
@@ -82,8 +80,55 @@ span.dot {
   font-size: 1.5em;
 }
 
-@media screen and (max-width: 699px) {
+@media screen and (max-width: 1600px) {
   main {
     flex-direction: column;
+  }
+
+  section.info-form {
+    align-items: center;
+    width: 100vw;
+  }
+
+  section.cv-preview {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  section.cv-preview {
+    transform: scale(0.8);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  section.cv-preview {
+    transform: scale(0.6);
+  }
+}
+
+@media screen and (max-width: 500px) {
+  main {
+    gap: 0px;
+  }
+
+  section.info-form {
+    transform: scale(0.8);
+  }
+
+  section.cv-preview {
+    transform: scale(0.5);
+  }
+}
+
+@media screen and (max-width: 420px) {
+  section.info-form {
+    transform: scale(0.7);
+  }
+
+  section.cv-preview {
+    transform: scale(0.4);
   }
 }

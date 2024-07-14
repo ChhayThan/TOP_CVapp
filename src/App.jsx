@@ -49,6 +49,11 @@ function App() {
     }
   }
   function qualityAddOnClick() {
+    if (qualities.length <= 0) {
+      let newQualityArray = [{ description: "", id: 0 }];
+      setQualities(newQualityArray);
+      return;
+    }
     let newID = qualities[qualities.length - 1].id + 1;
     qualities.push({ description: "", id: newID });
     let newQualityArray = [...qualities];

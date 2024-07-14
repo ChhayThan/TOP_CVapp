@@ -22,7 +22,10 @@ export default function Qualification({
                 value={quality.description}
                 onChange={(e) => qualityOnChange(quality.id, e.target.value)}
               ></textarea>
-              <button onClick={() => qualityDeleteOnClick(quality.id)}>
+              <button
+                className="qualityDeleteBtn"
+                onClick={() => qualityDeleteOnClick(quality.id)}
+              >
                 Delete
               </button>
             </li>
