@@ -1,7 +1,7 @@
 import "../styles/PersonalInfo.css";
 import CustomInput from "../util/CustomInput.jsx";
 
-function PersonalInfo({
+export default function PersonalInfo({
   setFirstName,
   setLastName,
   firstNameValue,
@@ -72,5 +72,3 @@ function PersonalInfo({
     </div>
   );
 }
-
-export default PersonalInfo;

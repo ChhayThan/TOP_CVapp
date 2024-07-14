@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PersonalInfo from "./components/PersonalInfo";
 import Qualification from "./components/Qualification";
+import Education from "./components/Education";
 import "./styles/App.css";
 
 function App() {
@@ -70,7 +71,15 @@ function App() {
     }
   }
 
-  let fullName = firstNameValue + " " + lastNameValue;
+  const [institutionValue, setInstitution] = useState("University Of Ottawa");
+  const [gpaValue, setGpa] = useState("9.3/10");
+  const [programValue, setProgram] = useState(
+    "Bachelor of Applied Science, Software Engineering (Co-Op)"
+  );
+  const [educationLocationValue, setEducationLocationValue] =
+    useState("Ottawa, ON");
+  const [yearOfStudyValue, setYearOfStudy] = useState("2023-2028");
+
   return (
     <>
       <main>
@@ -101,11 +110,26 @@ function App() {
             qualityAddOnClick={qualityAddOnClick}
             qualityOnChange={qualityOnChange}
           />
+
+          <Education
+            institutionValue={institutionValue}
+            setInstitution={(e) => setInstitution(e.target.value)}
+            gpaValue={gpaValue}
+            setGpa={(e) => setGpa(e.target.value)}
+            programValue={programValue}
+            setProgram={(e) => setProgram(e.target.value)}
+            educationLocationValue={educationLocationValue}
+            setLocation={(e) => setEducationLocationValue(e.target.value)}
+            yearOfStudyValue={yearOfStudyValue}
+            setYearOfStudy={(e) => setYearOfStudy(e.target.value)}
+          />
         </section>
         <section className="cv-preview">
           <div className="cv">
             <div className="heading">
-              <h1 className="fullName">{fullName}</h1>
+              <h1 className="fullName">
+                {firstNameValue + " " + lastNameValue}
+              </h1>
               <div className="contact">
                 <p className="phoneNumber">{phoneNumber}</p>
                 <p className="email">{emailAddress}</p>
@@ -129,6 +153,14 @@ function App() {
                   );
                 })}
               </ul>
+            </div>
+            <div className="education">
+              <h2>EDUCATION</h2>
+              <h3 className="institution">
+                {institutionValue + " GPA: " + gpaValue}
+              </h3>
+              <p className="program">{programValue}</p>
+              <p className="educationLocation">{educationLocationValue}</p>
             </div>
           </div>
         </section>
