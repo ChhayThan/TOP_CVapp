@@ -19,7 +19,7 @@ export default function Education({
         <img src="src/assets/educationIcon.svg" alt="Academic Cap" />
         <h1>Education</h1>
       </div>
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <label htmlFor="institution">Institution Name:</label>
         <CustomInput
           type="text"

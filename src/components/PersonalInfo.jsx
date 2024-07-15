@@ -21,7 +21,7 @@ export default function PersonalInfo({
         <img src="src/assets/personalIcon.svg" alt="Person Icon" />
         <h1>Personal Information</h1>
       </div>
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <label htmlFor="firstName">First Name:</label>
         <CustomInput
           type="text"
