@@ -6,6 +6,7 @@ import Skills from "./components/Skills";
 import Experience from "./components/Experience";
 import "./styles/App.css";
 import { v4 as uuidv4 } from "uuid";
+import { format } from "date-fns";
 
 function App() {
   const [componentStatus, setComponentStatus] = useState("personal");
@@ -227,7 +228,7 @@ function App() {
     for (let i = 0; i < experiences.length; i++) {
       if (experiences[i].id === eID) {
         for (let j = 0; j < experiences[i].responsibilities.length; j++) {
-          if (experiences[i].responsibilities.id === rID) {
+          if (experiences[i].responsibilities[j].id === rID) {
             experiences[i].responsibilities[j].description = value;
           }
         }
@@ -279,17 +280,17 @@ function App() {
     let exampleQualityArray = [
       {
         description:
-          "Enthusiastic and highly motivated software engineering student with a passion for learning and a strong desire to contribute to innovative and meaningful projects.",
+          "Meta Software Engineer with 4+years of expertise in designing systems, implementing procedures, and optimizing the code.",
         id: 0,
       },
       {
         description:
-          "Excellent communicator with strong written and verbal communication skills, capable of collaborating in team-based environments shown through past team-focused projects.",
+          "Leading the Meta Software Infrastructure team to ensure that the code, which runs millions of requests per second, efficiently eliminates faults and has a 65% enhanced uptime.",
         id: 1,
       },
       {
         description:
-          "Strong analytical and problem-solving abilities, shown through successful completion of projects and coursework.",
+          "Professional interest of understanding complex systems, devising step-by-step plans and solutions, and placing the right talent to execute the tasks.",
         id: 2,
       },
     ];
@@ -299,18 +300,18 @@ function App() {
     setGpa("4.0");
     setProgram("Bachelor of Science, Computer Science (Co-Op)");
     setEducationLocationValue("Cambridge, Massachusetts");
-    setYearOfStudy("2023-2028");
+    setYearOfStudy("2015-2019");
 
     let exampleTechnicalSkillsArray = [
       {
         title: "Languages",
-        description: "Java, Python, React, JavaScript, HTML/CSS",
+        description: "Java, C/C++/ C#, Python, JavaScript, HTML/CSS",
         id: uuidv4(),
       },
       {
         title: "Tools",
         description:
-          "Git, VScode, Webpack, Jest/JUnit, Microsoft Office (Power Point, Excel, Word)",
+          "Git, VScode, Webpack, Jest/JUnit, Microsoft Office, PowerShell, SQL, .NET Framework",
         id: uuidv4(),
       },
       {
@@ -344,6 +345,71 @@ function App() {
 
     setTechnicalSkills(exampleTechnicalSkillsArray);
     setRelevantSkills(exampleRelevantSkillsArray);
+
+    let exampleExperiencesArray = [
+      {
+        id: uuidv4(),
+        company: "Meta",
+        position: "Software Engineering Lead",
+        responsibilities: [
+          {
+            id: uuidv4(),
+            description:
+              "Managing the Meta Software Infrastructure team in ensuring the code smoothly.",
+          },
+          {
+            id: uuidv4(),
+            description:
+              "Overseeing a team of 10 software engineers to design, optimize, and build all core backend software (including large distributed components)",
+          },
+          {
+            id: uuidv4(),
+            description:
+              "Optimized the runtime environment by 45% to ensure that Meta's code is run with a sub-second latency",
+          },
+          {
+            id: uuidv4(),
+            description:
+              "Conducted bi-weekly design and code reviews with all frontend and backend software engineers to assess and improve Meta components: minimizing faults by 25%",
+          },
+        ],
+        currentJob: true,
+        startDate: "2022-01-04",
+        endDate: "",
+      },
+      {
+        id: uuidv4(),
+        company: "Amazon",
+        position: "Software Engineer II",
+        responsibilities: [
+          {
+            id: uuidv4(),
+            description:
+              "Built a custom integration between Amazon's internal tools and Slack via JavaScript, enhancing team productivity by 15%.",
+          },
+          {
+            id: uuidv4(),
+            description:
+              "Improved security of a web application by integrating Google Cloud Armor, reducing the risk of DDoS attacks by 63%.",
+          },
+          {
+            id: uuidv4(),
+            description:
+              "Reduced data retrieval times with Google Cloud Storage to store and manage large data sets for internal analytics project.",
+          },
+          {
+            id: uuidv4(),
+            description:
+              "Optimized the performance of a web application using Google Cloud Run, which boosted concurrent users by 27%.",
+          },
+        ],
+        currentJob: false,
+        startDate: "2019-01-04",
+        endDate: "2021-12-20",
+      },
+    ];
+
+    setExperiences(exampleExperiencesArray);
   }
 
   function clearForm() {
@@ -380,6 +446,7 @@ function App() {
     setProgram("");
     setEducationLocationValue("");
     setYearOfStudy("");
+    setExperiences(experiencesArray);
   }
 
   return (
@@ -552,6 +619,44 @@ function App() {
                   })}
                 </ul>
               </div>
+            </div>
+            <div className="experience">
+              <h2 className="sectionHeading">EXPERIENCE</h2>
+              {experiences.map((experience) => {
+                let startDate = experience.startDate
+                  ? format(experience.startDate, "MMM yyyy")
+                  : "";
+                let endDate = experience.currentJob
+                  ? "Present"
+                  : experience.endDate
+                  ? format(experience.endDate, "MMM yyyy")
+                  : "";
+                return (
+                  <div key={experience.id} className="experienceItem">
+                    <div className="jobTitle">
+                      <p className="position">{`${
+                        experience.company
+                          ? experience.position + " | "
+                          : experience.position
+                      }`}</p>
+                      <p className="company"> &nbsp;{experience.company}</p>
+                    </div>
+                    <p className="jobDuration">{`${
+                      startDate && endDate ? startDate + " - " + endDate : ""
+                    }`}</p>
+                    <ul className="responsibilityList">
+                      {experience.responsibilities.map((responsibility) => {
+                        return (
+                          <li key={responsibility.id}>
+                            <span className="dot">&#x2022; </span>
+                            <p>{responsibility.description}</p>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
