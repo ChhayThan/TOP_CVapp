@@ -2,6 +2,8 @@ import "../styles/Education.css";
 import CustomInput from "../util/CustomInput.jsx";
 
 export default function Education({
+  componentStatus,
+  setComponentStatus,
   institutionValue,
   setInstitution,
   gpaValue,
@@ -13,8 +15,12 @@ export default function Education({
   yearOfStudyValue,
   setYearOfStudy,
 }) {
+  const active = componentStatus === "education" ? true : false;
   return (
-    <div className="educationContainer">
+    <div
+      className={`educationContainer ${active ? "active" : ""}`}
+      onClick={() => setComponentStatus("education")}
+    >
       <div className="title">
         <img src="src/assets/educationIcon.svg" alt="Academic Cap" />
         <h1>Education</h1>

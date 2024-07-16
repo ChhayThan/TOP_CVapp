@@ -1,0 +1,56 @@
+div.experienceContainer {
+  display: flex;
+  flex-direction: column;
+}
+div.experienceContainer div.experienceItem {
+  display: flex;
+  flex-direction: column;
+}
+button.deleteBtn {
+  font-family: "Poppins", sans-serif;
+  border-radius: 10px;
+  border: none;
+  padding: 8px;
+  font-size: 0.8em;
+}
+button.deleteBtn:hover {
+  background-color: rgb(192, 57, 57);
+  color: white;
+}
+
+button.addBtn {
+  font-family: "Poppins", sans-serif;
+  border-radius: 10px;
+  border: none;
+  padding: 8px;
+  font-size: 1em;
+}
+button.addBtn:hover {
+  background-color: rgb(27, 193, 27);
+  color: white;
+}
+
+button.addBtn:active,
+button.deleteBtn:active {
+  transform: translateY(3px);
+}
+
+div.experienceContainer.active form {
+  display: flex;
+  gap: 30px;
+}
+div.experienceContainer form {
+  display: none;
+}
+
+div.experienceContainer.active {
+  padding: 2em;
+  border: 1px dotted black;
+  border-radius: 10px;
+}
+
+div.dottedLine {
+  margin-top: 2em;
+  width: 100%;
+  border-top: 0.2em dotted black;
+}

@@ -3,10 +3,13 @@ import PersonalInfo from "./components/PersonalInfo";
 import Qualification from "./components/Qualification";
 import Education from "./components/Education";
 import Skills from "./components/Skills";
+import Experience from "./components/Experience";
 import "./styles/App.css";
 import { v4 as uuidv4 } from "uuid";
 
 function App() {
+  const [componentStatus, setComponentStatus] = useState("personal");
+
   const [firstNameValue, setFirstNameValue] = useState("");
   const [lastNameValue, setLastNameValue] = useState("");
 
@@ -148,6 +151,123 @@ function App() {
     }
   }
 
+  let experiencesArray = [
+    {
+      id: uuidv4(),
+      company: "",
+      position: "",
+      responsibilities: [{ id: uuidv4(), description: "" }],
+      currentJob: false,
+      startDate: "",
+      endDate: "",
+    },
+  ];
+
+  const [experiences, setExperiences] = useState(experiencesArray);
+
+  function experienceDeleteOnClick(id) {
+    for (let i = 0; i < experiences.length; i++) {
+      if (experiences[i].id === id) {
+        experiences.splice(i, 1);
+      }
+      let newExperiences = [...experiences];
+      setExperiences(newExperiences);
+    }
+  }
+  function experienceAddOnClick() {
+    let newExperiences;
+    if (experiences.length <= 0) {
+      newExperiences = [
+        {
+          id: uuidv4(),
+          company: "",
+          position: "",
+          responsibilities: [{ id: uuidv4(), description: "" }],
+          currentJob: false,
+          startDate: "",
+          endDate: "",
+        },
+      ];
+    } else {
+      newExperiences = [
+        ...experiences,
+        {
+          id: uuidv4(),
+          company: "",
+          position: "",
+          responsibilities: [{ id: uuidv4(), description: "" }],
+          currentJob: false,
+          startDate: "",
+          endDate: "",
+        },
+      ];
+    }
+    setExperiences(newExperiences);
+  }
+
+  function experienceOnChange(type, id, value) {
+    for (let i = 0; i < experiences.length; i++) {
+      if (experiences[i].id === id) {
+        type === "company"
+          ? (experiences[i].company = value)
+          : type === "position"
+          ? (experiences[i].position = value)
+          : type === "currentJob"
+          ? (experiences[i].currentJob = value)
+          : type === "startDate"
+          ? (experiences[i].startDate = value)
+          : (experiences[i].endDate = value);
+      }
+      let newExperiences = [...experiences];
+      setExperiences(newExperiences);
+    }
+  }
+
+  function responsibilityOnChange(eID, rID, value) {
+    for (let i = 0; i < experiences.length; i++) {
+      if (experiences[i].id === eID) {
+        for (let j = 0; j < experiences[i].responsibilities.length; j++) {
+          if (experiences[i].responsibilities.id === rID) {
+            experiences[i].responsibilities[j].description = value;
+          }
+        }
+      }
+    }
+    let newExperiences = [...experiences];
+    setExperiences(newExperiences);
+  }
+
+  function responsibilityDeleteOnClick(eID, rID) {
+    for (let i = 0; i < experiences.length; i++) {
+      if (experiences[i].id === eID) {
+        for (let j = 0; j < experiences[i].responsibilities.length; j++) {
+          if (experiences[i].responsibilities[j].id === rID) {
+            experiences[i].responsibilities.splice(j, 1);
+          }
+        }
+      }
+    }
+    let newExperiences = [...experiences];
+    setExperiences(newExperiences);
+  }
+
+  function responsibilityAddOnClick(eID) {
+    for (let i = 0; i < experiences.length; i++) {
+      if (experiences[i].id === eID) {
+        if (experiences[i].responsibilities.length == 0) {
+          experiences[i].responsibilities = [{ id: uuidv4(), description: "" }];
+        } else {
+          experiences[i].responsibilities = [
+            ...experiences[i].responsibilities,
+            { id: uuidv4(), description: "" },
+          ];
+        }
+      }
+    }
+    let newExperiences = [...experiences];
+    setExperiences(newExperiences);
+  }
+
   function loadExample() {
     setFirstNameValue("Eric");
     setLastNameValue("C");
@@ -276,6 +396,8 @@ function App() {
           </div>
 
           <PersonalInfo
+            componentStatus={componentStatus}
+            setComponentStatus={setComponentStatus}
             setFirstName={(e) => setFirstNameValue(e.target.value)}
             setLastName={(e) => setLastNameValue(e.target.value)}
             firstNameValue={firstNameValue}
@@ -296,6 +418,8 @@ function App() {
             setGithubURL={(e) => setGithubURL(e.target.value)}
           />
           <Qualification
+            componentStatus={componentStatus}
+            setComponentStatus={setComponentStatus}
             qualities={qualities}
             qualityDeleteOnClick={qualityDeleteBtnOnClick}
             qualityAddOnClick={qualityAddOnClick}
@@ -303,6 +427,8 @@ function App() {
           />
 
           <Education
+            componentStatus={componentStatus}
+            setComponentStatus={setComponentStatus}
             institutionValue={institutionValue}
             setInstitution={(e) => setInstitution(e.target.value)}
             gpaValue={gpaValue}
@@ -328,6 +454,8 @@ function App() {
           />
 
           <Skills
+            componentStatus={componentStatus}
+            setComponentStatus={setComponentStatus}
             technicalSkills={technicalSkills}
             technicalSkillDeleteOnClick={technicalSkillDeleteOnClick}
             technicalSkillAddOnClick={technicalSkillAddOnClick}
@@ -336,6 +464,18 @@ function App() {
             relevantSkillDeleteOnClick={relevantSkillDeleteOnClick}
             relevantSkillAddOnClick={relevantSkillAddOnClick}
             relevantSkillOnChange={relevantSkillOnChange}
+          />
+
+          <Experience
+            componentStatus={componentStatus}
+            setComponentStatus={setComponentStatus}
+            experiences={experiences}
+            experienceDeleteOnClick={experienceDeleteOnClick}
+            experienceAddOnClick={experienceAddOnClick}
+            experienceOnChange={experienceOnChange}
+            responsibilityOnChange={responsibilityOnChange}
+            responsibilityDeleteOnClick={responsibilityDeleteOnClick}
+            responsibilityAddOnClick={responsibilityAddOnClick}
           />
         </section>
         <section className="cv-preview">

@@ -11,7 +11,14 @@ section.info-form {
   flex-direction: column;
   gap: 1rem;
 
-  margin-top: 20px;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.3rem;
 }
 
 div.formBtn {
@@ -219,7 +226,6 @@ div.relevantSkills h3 {
     transform: scale(0.4);
   }
 }
-
 @media print {
   section.info-form {
     display: none;
@@ -229,4 +235,16 @@ div.relevantSkills h3 {
     margin: 0px;
     box-shadow: none;
   }
+}
+
+div.title {
+  padding: 1em;
+  border-radius: 10px;
+}
+
+div.title:hover {
+  background-color: rgba(236, 236, 236, 0.685);
+}
+div.active div.title:hover {
+  background-color: white;
 }

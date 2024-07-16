@@ -38,3 +38,16 @@ button.addBtn:active,
 button.deleteBtn:active {
   transform: translateY(3px);
 }
+
+div.skillsContainer.active form {
+  display: flex;
+}
+div.skillsContainer form {
+  display: none;
+}
+
+div.skillsContainer.active {
+  padding: 2em;
+  border: 1px dotted black;
+  border-radius: 10px;
+}

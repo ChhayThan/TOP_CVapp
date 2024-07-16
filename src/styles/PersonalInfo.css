@@ -15,12 +15,20 @@ div.title {
 div.title img {
   width: 2em;
 }
-form {
+
+div.personalContainer.active form {
   display: flex;
-  flex-direction: column;
-  font-size: 1.3rem;
+}
+div.personalContainer form {
+  display: none;
 }
 
 form input {
   width: 20em;
+}
+
+div.personalContainer.active {
+  padding: 2em;
+  border: 1px dotted black;
+  border-radius: 10px;
 }

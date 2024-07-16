@@ -2,6 +2,8 @@ import "../styles/Skills.css";
 import CustomInput from "../util/CustomInput.jsx";
 
 export default function Skills({
+  componentStatus,
+  setComponentStatus,
   technicalSkills,
   technicalSkillDeleteOnClick,
   technicalSkillAddOnClick,
@@ -21,8 +23,13 @@ export default function Skills({
     relevantSkillAddOnClick();
   };
 
+  const active = componentStatus === "skills" ? true : false;
+
   return (
-    <div className="skillsContainer">
+    <div
+      className={`skillsContainer ${active ? "active" : ""}`}
+      onClick={() => setComponentStatus("skills")}
+    >
       <div className="title">
         <img src="src/assets/skillIcon.svg" alt="Star Icon" />
         <h1>Skills</h1>

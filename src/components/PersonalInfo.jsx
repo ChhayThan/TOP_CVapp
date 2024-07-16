@@ -2,6 +2,8 @@ import "../styles/PersonalInfo.css";
 import CustomInput from "../util/CustomInput.jsx";
 
 export default function PersonalInfo({
+  componentStatus,
+  setComponentStatus,
   setFirstName,
   setLastName,
   firstNameValue,
@@ -15,8 +17,12 @@ export default function PersonalInfo({
   githubURL,
   setGithubURL,
 }) {
+  const active = componentStatus === "personal" ? true : false;
   return (
-    <div className="personalContainer">
+    <div
+      className={`personalContainer ${active ? "active" : ""}`}
+      onClick={() => setComponentStatus("personal")}
+    >
       <div className="title">
         <img src="src/assets/personalIcon.svg" alt="Person Icon" />
         <h1>Personal Information</h1>
