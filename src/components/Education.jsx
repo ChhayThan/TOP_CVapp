@@ -22,7 +22,7 @@ export default function Education({
       onClick={() => setComponentStatus("education")}
     >
       <div className="title">
-        <img src="src/assets/educationIcon.svg" alt="Academic Cap" />
+        <img src="./src/assets/educationIcon.svg" alt="Academic Cap" />
         <h1>Education</h1>
       </div>
       <form onSubmit={(e) => e.preventDefault()}>

@@ -15,7 +15,7 @@ export default function Qualification({
       onClick={() => setComponentStatus("qualification")}
     >
       <div className="title">
-        <img src="src/assets/qualificationIcon.svg" alt="Star icon" />
+        <img src="./src/assets/qualificationIcon.svg" alt="Star icon" />
         <h1>Summary Of Qualification</h1>
       </div>
       <form onSubmit={(e) => e.preventDefault()}>
