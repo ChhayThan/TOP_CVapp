@@ -16,10 +16,11 @@ button.deleteBtn {
   border: none;
   padding: 8px;
   font-size: 0.8em;
+  background-color: rgb(235, 107, 107);
+  color: white;
 }
 button.deleteBtn:hover {
   background-color: rgb(192, 57, 57);
-  color: white;
 }
 
 button.addBtn {
@@ -28,10 +29,11 @@ button.addBtn {
   border: none;
   padding: 8px;
   font-size: 1em;
+  background-color: rgb(21, 144, 21);
+  color: white;
 }
 button.addBtn:hover {
-  background-color: rgb(27, 193, 27);
-  color: white;
+  background-color: rgb(21, 155, 21);
 }
 
 button.addBtn:active,

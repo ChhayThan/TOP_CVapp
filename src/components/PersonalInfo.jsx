@@ -24,7 +24,6 @@ export default function PersonalInfo({
       onClick={() => setComponentStatus("personal")}
     >
       <div className="title">
-        <img src="./src/assets/personalIcon.svg" alt="Person Icon" />
         <h1>Personal Information</h1>
       </div>
       <form onSubmit={(e) => e.preventDefault()}>

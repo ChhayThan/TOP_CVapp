@@ -38,10 +38,13 @@ button.qualityDeleteBtn {
   border: none;
   padding: 8px;
   font-size: 0.8em;
+
+  background-color: rgb(235, 107, 107);
+  color: white;
 }
+
 button.qualityDeleteBtn:hover {
   background-color: rgb(192, 57, 57);
-  color: white;
 }
 
 button.qualityDeleteBtn:active,
@@ -55,11 +58,13 @@ button.addQualityBtn {
   border: none;
   padding: 8px;
   font-size: 1em;
+
+  background-color: rgb(21, 144, 21);
+  color: white;
 }
 
 button.addQualityBtn:hover {
-  background-color: rgb(44, 186, 44);
-  color: white;
+  background-color: rgb(21, 155, 21);
 }
 
 div.qualificationContainer.active form {

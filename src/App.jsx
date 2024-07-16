@@ -575,6 +575,44 @@ function App() {
                 })}
               </ul>
             </div>
+            <div className="experience">
+              <h2 className="sectionHeading">EXPERIENCE</h2>
+              {experiences.map((experience) => {
+                let startDate = experience.startDate
+                  ? format(experience.startDate, "MMM yyyy")
+                  : "";
+                let endDate = experience.currentJob
+                  ? "Present"
+                  : experience.endDate
+                  ? format(experience.endDate, "MMM yyyy")
+                  : "";
+                return (
+                  <div key={experience.id} className="experienceItem">
+                    <div className="jobTitle">
+                      <p className="position">{`${
+                        experience.company
+                          ? experience.position + " | "
+                          : experience.position
+                      }`}</p>
+                      <p className="company"> &nbsp;{experience.company}</p>
+                    </div>
+                    <p className="jobDuration">{`${
+                      startDate && endDate ? startDate + " - " + endDate : ""
+                    }`}</p>
+                    <ul className="responsibilityList">
+                      {experience.responsibilities.map((responsibility) => {
+                        return (
+                          <li key={responsibility.id}>
+                            <span className="dot">&#x2022; </span>
+                            <p>{responsibility.description}</p>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                );
+              })}
+            </div>
             <div className="education">
               <h2 className="sectionHeading">EDUCATION</h2>
               <h3 className="institution">
@@ -619,44 +657,6 @@ function App() {
                   })}
                 </ul>
               </div>
-            </div>
-            <div className="experience">
-              <h2 className="sectionHeading">EXPERIENCE</h2>
-              {experiences.map((experience) => {
-                let startDate = experience.startDate
-                  ? format(experience.startDate, "MMM yyyy")
-                  : "";
-                let endDate = experience.currentJob
-                  ? "Present"
-                  : experience.endDate
-                  ? format(experience.endDate, "MMM yyyy")
-                  : "";
-                return (
-                  <div key={experience.id} className="experienceItem">
-                    <div className="jobTitle">
-                      <p className="position">{`${
-                        experience.company
-                          ? experience.position + " | "
-                          : experience.position
-                      }`}</p>
-                      <p className="company"> &nbsp;{experience.company}</p>
-                    </div>
-                    <p className="jobDuration">{`${
-                      startDate && endDate ? startDate + " - " + endDate : ""
-                    }`}</p>
-                    <ul className="responsibilityList">
-                      {experience.responsibilities.map((responsibility) => {
-                        return (
-                          <li key={responsibility.id}>
-                            <span className="dot">&#x2022; </span>
-                            <p>{responsibility.description}</p>
-                          </li>
-                        );
-                      })}
-                    </ul>
-                  </div>
-                );
-              })}
             </div>
           </div>
         </section>

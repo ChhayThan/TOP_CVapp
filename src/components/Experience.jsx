@@ -18,7 +18,6 @@ export default function Experience({
       onClick={() => setComponentStatus("experience")}
     >
       <div className="title">
-        <img src="./src/assets/experienceIcon.svg" alt="Work bag icon" />
         <h1>Experience</h1>
       </div>
       <form onSubmit={(e) => e.preventDefault()}>

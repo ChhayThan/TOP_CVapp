@@ -31,7 +31,6 @@ export default function Skills({
       onClick={() => setComponentStatus("skills")}
     >
       <div className="title">
-        <img src="./src/assets/skillIcon.svg" alt="Star Icon" />
         <h1>Skills</h1>
       </div>
       <form onSubmit={(e) => e.preventDefault()}>

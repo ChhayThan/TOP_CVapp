@@ -177,6 +177,51 @@ div.relevantSkills h3 {
   font-size: 1.1em;
 }
 
+div.title {
+  padding: 1em;
+  border-radius: 10px;
+  border-bottom: 1px dotted rgba(200, 200, 200, 0.685);
+}
+
+div.title:hover {
+  background-color: rgba(236, 236, 236, 0.685);
+  border-bottom: 1px dotted rgba(236, 236, 236, 0.685);
+}
+div.active div.title {
+  border-bottom: none;
+}
+div.active div.title:hover {
+  background-color: white;
+}
+
+div.experienceItem {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  grid-template-rows: 25px 1fr;
+  padding-left: 1em;
+}
+
+div.jobTitle {
+  display: flex;
+  font-size: 1.1em;
+}
+
+div.jobTitle p.position {
+  font-weight: 600;
+}
+p.jobDuration {
+  justify-self: flex-end;
+}
+
+ul.responsibilityList {
+  grid-column: span 2;
+}
+
+ul.responsibilityList li {
+  line-height: 90%;
+  font-size: 1em;
+}
+
 @media screen and (max-width: 1600px) {
   main {
     flex-direction: column;
@@ -237,49 +282,4 @@ div.relevantSkills h3 {
     margin: 0px;
     box-shadow: none;
   }
-}
-
-div.title {
-  padding: 1em;
-  border-radius: 10px;
-  border-bottom: 1px dotted rgba(200, 200, 200, 0.685);
-}
-
-div.title:hover {
-  background-color: rgba(236, 236, 236, 0.685);
-  border-bottom: 1px dotted rgba(236, 236, 236, 0.685);
-}
-div.active div.title {
-  border-bottom: none;
-}
-div.active div.title:hover {
-  background-color: white;
-}
-
-div.experienceItem {
-  display: grid;
-  grid-template-columns: 1fr 400px;
-  grid-template-rows: 25px 1fr;
-  padding-left: 1em;
-}
-
-div.jobTitle {
-  display: flex;
-  font-size: 1.1em;
-}
-
-div.jobTitle p.position {
-  font-weight: 600;
-}
-p.jobDuration {
-  justify-self: flex-end;
-}
-
-ul.responsibilityList {
-  grid-column: span 2;
-}
-
-ul.responsibilityList li {
-  line-height: 90%;
-  font-size: 1em;
 }

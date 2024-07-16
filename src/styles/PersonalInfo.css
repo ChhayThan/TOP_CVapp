@@ -12,8 +12,9 @@ div.title {
   display: flex;
 }
 
-div.title img {
-  width: 2em;
+div.title h1,
+label {
+  font-family: "Poppins", sans-serif;
 }
 
 div.personalContainer.active form {
