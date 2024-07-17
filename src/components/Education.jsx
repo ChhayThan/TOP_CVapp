@@ -11,7 +11,7 @@ export default function Education({
   programValue,
   setProgram,
   educationLocationValue,
-  setEducationLocationValue,
+  setLocation,
   yearOfStudyValue,
   setYearOfStudy,
 }) {
@@ -54,7 +54,7 @@ export default function Education({
           type="text"
           inputId="location"
           value={educationLocationValue}
-          onChange={setEducationLocationValue}
+          onChange={setLocation}
           placeholder="City, Province/State"
         />
         <label htmlFor="yearOfStudy">Year of Study:</label>
